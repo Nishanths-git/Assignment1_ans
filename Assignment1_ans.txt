@@ -1,0 +1,320 @@
+Question 1: Crypto
+
+Code-
+
+#include <iostream>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+    string alphabet{"etaionshr"};
+    string key{"!@#$%^&*(a"};
+    string secret{};
+    string encrypt{};
+    cout<<"Enter your secret message: "<<endl;
+    getline(cin,secret);
+
+    for(char c:secret){
+        size_t position=alphabet.find(c);
+        if(position!=string::npos)
+        {char newChar{key.at(position)};
+            encrypt+=newChar;
+        }else{
+        encrypt+=c;
+        }
+
+    }
+    cout<<"Encrypting....."<<endl;
+    cout<<"Encrypted message is: "<<encrypt<<endl;
+    return 0;
+}
+
+--------------------------------------------------------------
+
+Question 2: Display student grade
+
+Code-
+
+
+#include <iostream>
+#define MAX_SIZE 100 // Maximum size of the string
+using namespace std;
+
+
+int main() {
+
+ int score;
+ cout<<"Enter the score obtained: "<<endl;
+ cin>>score;
+
+ if(score>=50)
+ {
+     if(score>=85){cout<<"E"<<endl;}
+     else if(score>=75 && score<85){cout<<"O"<<endl;}
+     else if(score>=65 && score<75){cout<<"G"<<endl;}
+     else cout<<"S"<<endl;
+ }
+ else if(score>33)
+ {
+     cout<<"Re-sit in exam."<<endl;
+ }
+ else cout<<"Redo course."<<endl;
+    return 0;
+}
+
+---------------------------------------------------------------
+
+Question 3: Key word or not
+
+Code-
+
+
+#include <string.h>
+#include<iostream>
+using namespace std;
+
+int main(){
+    int i,n,flag=0;
+    char key[32][10] = { "break","case","continue","default","defer","else","for",
+        "func","goto","if","map","range","return","struct","type","var"};
+    char str[20];
+
+    printf("Enter string: ");
+    gets(str);
+
+    for(i = 0; i < 32; i++){
+        if(strcmp(str, key[i])==0)
+            flag=1;
+    }
+    if (flag)
+        cout<<str<<" is a Keyword";
+    else
+        cout<<str<<" is not a Keyword";
+   return 0;
+}
+
+
+----------------------------------------------------------------
+
+Question 4: University name and Dept. 
+
+Code-
+
+
+#include <string.h>
+#include<iostream>
+using namespace std;
+
+int main(){
+
+ int cet,puc;
+ cout<<"Enter your CET score: "<<endl;
+ cin>>cet;
+ cout<<"Enter your PUC score: "<<endl;
+ cin>>puc;
+
+ if(cet>=80 && puc>=70)
+    cout<<"IT in VTU"<<endl;
+ else if(cet>=70 && puc>=60)
+    cout<<"Computer Science Eng in VTU"<<endl;
+ else if(cet>70 && puc>=50)
+    cout<<"Electronics & comm in VTU"<<endl;
+ else if(cet>=60 && cet<=70 && puc>=50)
+    cout<<"IT in Manipal University"<<endl;
+ else if(cet>=50 && cet<=59 && puc>=50)
+    cout<<"Civil Engg in Manipal University"<<endl;
+ else
+    cout<<"Mechanical Engg in Manipal University"<<endl;
+
+   return 0;
+}
+
+
+------------------------------------------------------------
+
+Question 5: Difference between sum of odd and even positions of a number
+
+Code-
+
+#include <iostream>
+using namespace std;
+int main() {
+   int n, r=0,diff =0,even=0,odd=0;
+
+   cout<<"Enter the number: "<<endl;
+   cin>>n;
+   while(n != 0){
+      r = n%10;
+      if(r % 2 == 0) {
+         even+=r;
+      } else {
+         odd+=r;
+      }
+      n/=10;
+   }
+   diff=odd-even;
+   cout<<diff;
+   return 0;
+}
+
+----------------------------------------------------------------
+
+Question 6: Temperature conversion
+
+Code-
+
+#include <iostream>
+#include<iomanip>
+using namespace std;
+int main() {
+
+   int num;
+   double tc,tf;
+   cout<<"Select 1 to convert Celcius to Fahrenheit: "<<endl;
+   cout<<"Select 2 to convert Fahrenheit to Celcius: "<<endl;
+   cout<<"Select 3 to exit"<<endl;
+   cout<<"Enter your choice: ";
+   cin>>num;
+   cout<<fixed<<setprecision(1);
+
+   switch(num){
+
+   case 1: cout<<"Enter temperature in Celcius: "<<endl;
+            cin>>tc;
+            tf=(tc*9/5)+32;
+            cout<<"Temperature in Fahrenheit is: "<<tf<<endl;
+            break;
+   case 2: cout<<"Enter temperature in Fahrenheit: "<<endl;
+            cin>>tf;
+            tc=(tf-32)*5/9;
+            cout<<"Temperature in Celcius is: "<<tf<<endl;
+            break;
+
+    case 3: cout<<"You exited."<<endl;break;
+
+    default: cout<<"Invalid choice!"<<endl;
+
+
+   }
+
+   return 0;
+}
+
+----------------------------------------------------------------
+
+Question 7: Character repetition in a string
+
+Code-
+
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <cctype>
+
+using namespace std;
+
+int main()
+{
+    string s1;
+    cout<<"Enter the string: ";
+    getline(cin,s1);
+    int len=0;
+
+    while(s1[len]!='\0')
+    {
+        len++;
+    }
+
+    int arr[256]={0};
+    int i;
+    for(i=0;i<len;i++)
+    {
+        if(s1[i]==' ')
+            continue;
+            arr[s1[i]]++;
+    }
+
+    for(i=0;i<256;i++)
+    {
+        if(arr[i]>1)
+        {
+            cout<<(char)(i)<<arr[i]<<endl;
+        }
+    }
+
+    return 0;
+}
+
+--------------------------------------------------------------
+
+Question 8: Upper and lower case switch
+
+Code-
+
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main()
+{
+    string str;
+    cout<<"Enter the string: ";
+    getline(cin,str);
+
+    for(int i=0;i<str.length();i++)
+    {
+        if(isupper(str[i])){
+            str[i]=tolower(str[i]);
+        }
+        else{
+            str[i]=toupper(str[i]);
+        }
+    }
+
+    cout<<str<<endl;
+
+    return 0;
+}
+
+
+---------------------------------------------------------------
+
+Question 9: Inserting element
+
+Code-
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int arr[30], size, pos, i, insElem, count = 0;
+
+  cout << "Enter the size of an array (Max size: 30): ";
+  cin >> size;
+
+  cout << "Enter array elements:\n";
+  for (i = 0; i < size; i++)
+    cin >> arr[i];
+
+  cout << "\nEnter element to be inserted: "<<endl;
+  cin >> insElem;
+
+  cout << "Enter the position: "<<endl; //position specified
+  cin >> pos;
+
+  for (i = size; i >= pos; i--)
+    //arr[i] = arr[i-1];
+    arr[pos] = insElem;
+
+  //Display new array
+  cout << "New Array after Insertion:\n";
+  for (i = 0; i < (size ); i++)
+    cout << arr[i] << " ";
+
+  return 0;
+}
+-----------------------------------------------------------
